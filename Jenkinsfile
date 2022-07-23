@@ -21,8 +21,11 @@ node{
               }
           }
       }
-  stage('Test Stage'){
-    docker.withServer('tcp://10.10.1.21:2376')
-    def customImage = docker.build("my-image:${env.BUILD_ID}")
-  }        
+  stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build -t shanem/spring-petclinic:latest .'        
+      }
+  }
+
 }
