@@ -20,5 +20,9 @@ node{
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
           }
-      }        
+      }
+  stage('Test Stage'){
+    docker.withServer('tcp://10.10.1.21:2376')
+    def customImage = docker.build("my-image:${env.BUILD_ID}")
+  }        
 }
