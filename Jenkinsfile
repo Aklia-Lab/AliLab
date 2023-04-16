@@ -24,7 +24,7 @@ node{
   stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t aak/a-lab:latest .'        
+        sh 'docker build -t aak/a-lab:latest -f subfolder/Dockerfile'        
       }
   }
    
@@ -35,9 +35,8 @@ node{
 
         /* Push the container to the custom Registry */
         customImage.push()
+        customImage.push('latest')
                 }
             }    
-   
- 
 
 }
