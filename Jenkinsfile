@@ -24,7 +24,7 @@ node{
   stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t aak/s-lab:latest .'        
+        sh 'docker build -t aak/a-lab:latest .'        
       }
   }
 
