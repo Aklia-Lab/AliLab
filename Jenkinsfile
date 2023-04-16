@@ -27,5 +27,17 @@ node{
         sh 'docker build -t aak/a-lab:latest .'        
       }
   }
+   
+  stage('Deploy') {
+            sdocker.withRegistry('http://192.168.1.10') {
+
+        def customImage = docker.build("A-Lab:${env.BUILD_ID}")
+
+        /* Push the container to the custom Registry */
+        customImage.push()
+                }
+            }    
+   
+ 
 
 }
