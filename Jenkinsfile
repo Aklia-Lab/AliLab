@@ -29,9 +29,9 @@ node{
   }
    
   stage('Deploy') {
-            sdocker.withRegistry('http://192.168.1.10') {
+        docker.withRegistry('http://192.168.1.10') {
 
-        def customImage = docker.build("A-Lab:${env.BUILD_ID}")
+        def customImage = docker.build("A-Lab:${env.BUILD_ID}", "./dockerfiles/test")
 
         /* Push the container to the custom Registry */
         customImage.push()
