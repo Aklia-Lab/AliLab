@@ -24,7 +24,8 @@ node{
   stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t aak/a-lab:latest -f subfolder/Dockerfile'        
+        sh 'docker build -t aak/a-lab:latest .'
+         /* docker build -t aak/a-lab:latest -f subfolder/Dockerfile' */
       }
   }
    
