@@ -25,7 +25,7 @@ node{
     
   stage('Deploy/build') {
         def docker = "docker"
-        docker.withRegistry('http://192.168.1.10:5000') {
+        docker.withRegistry('http://192.168.1.10') {
 
         def customImage = docker.build("A-Lab:${env.BUILD_ID}")
 
