@@ -22,15 +22,10 @@ node{
           }
       }
    
-  stage('Docker Build') {
-    	agent any
-      steps {
-      	sh 'docker build -t a-lab/a-lab:latest .'
-      }
-    }  
     
   stage('Deploy/build') {
-        docker.withRegistry('http://192.168.1.10') {
+        def docker = "docker"
+        docker.withRegistry('http://192.168.1.10:5000') {
 
         def customImage = docker.build("A-Lab:${env.BUILD_ID}")
 
