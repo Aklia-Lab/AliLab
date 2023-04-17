@@ -22,12 +22,11 @@ node{
           }
       }
   stage('Docker Build') {
-      agent any
+    	agent any
       steps {
-        sh 'docker build -t aak/a-lab:latest .'
-         /* docker build -t aak/a-lab:latest -f subfolder/Dockerfile' */
+      	sh 'docker build -t a-lab/a-lab:latest .'
       }
-  }
+    }
    
   stage('Deploy/build') {
         docker.withRegistry('http://192.168.1.10') {
