@@ -32,4 +32,13 @@ node{
             app.push("latest")
         }
     }
+   
+  stage('run app') {
+        docker.withServer('tcp://192.168.1.10:2375') {
+        docker.image('a-lab/pyyapp').withRun('-p 5005:5000') {
+            /* do things */
+        }
+    }
+    }
+   
 }
