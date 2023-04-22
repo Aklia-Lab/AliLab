@@ -23,19 +23,9 @@ node{
       }
 
 
- stage('Build docker image'){
-            steps{
-                script{
-                    sh 'docker build -t aklialab/a-lab .'
-                 }
-            }
-        } 
-   
-  stage('Push image to Hub'){
-            steps{
-                script{    
-                   sh 'docker push aklialab/a-lab:${env.BUILD_ID}'
-                }
-            }
-        } 
+ stage('Build') {
+      steps {
+        sh 'docker build -t a-lab/pyapp .'
+      }
+    }
 }
