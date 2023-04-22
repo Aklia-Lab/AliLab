@@ -25,7 +25,7 @@ node{
     
   stage('Deploy/build') {
         def docker = "a-docker"
-        docker.withRegistry('http://192.168.1.10') {
+        docker.withRegistry('https://registry.aaklia.com/') {
 
         def customImage = docker.build("A-Lab:${env.BUILD_ID}")
 
