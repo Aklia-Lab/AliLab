@@ -21,7 +21,15 @@ node{
               }
           }
       }
-   
+agent { dockerfile true }
+stages {
+   stage( 'Test') {
+     steps {
+      sh ...
+         node --version
+        git --version
+         curl --version
+ 
     
   stage('Deploy/build') {
         def docker = "a-docker"
