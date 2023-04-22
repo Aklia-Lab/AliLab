@@ -23,18 +23,19 @@ node{
       }
 
 
- 
-  agent { dockerfile true }  
-  stage('Deploy&build') {
-        def docker = "a-docker"
-        docker.withRegistry('https://registry.aaklia.com/') {
-
-        def customImage = docker.build("A-Lab:${env.BUILD_ID}")
-
-        /* Push the container to the custom Registry */
-        customImage.push()
-        customImage.push('latest')
+ stage('Build docker image'){
+            steps{
+                script{
+                    sh 'docker build -t aklialab/a-lab .'
+                 }
+            }
+        } 
+   
+  stage('Push image to Hub'){
+            steps{
+                script{    
+                   sh 'docker push aklialab/a-lab:${env.BUILD_ID}'
                 }
-            }    
-
+            }
+        } 
 }
