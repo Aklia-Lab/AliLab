@@ -25,7 +25,7 @@ node{
 
  
   agent { dockerfile true }  
-  stage('Deploy/build') {
+  stage('Deploy&build') {
         def docker = "a-docker"
         docker.withRegistry('https://registry.aaklia.com/') {
 
