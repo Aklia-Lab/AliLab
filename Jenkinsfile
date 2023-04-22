@@ -22,7 +22,7 @@ node{
           }
       }
  stage('Build') { 
-   sshagent(credentials: ['ssh-credentials-id']) {
+   sshagent(credentials: ['a-serv']) {
       steps {
         sh 'docker build -t a-lab/pyapp .'
       }
