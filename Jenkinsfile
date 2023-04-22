@@ -20,14 +20,7 @@ node{
               }
           }
       }
-   
-   stage('Test') {
-      agent { dockerfile true }
-            steps {
-                sh 'node --version'
-                sh 'svn --version'
-            }
-        }
+
    
  stage('Build image') {
         app = docker.build("a-lab/pyapp")
