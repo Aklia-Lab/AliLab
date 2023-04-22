@@ -4,9 +4,6 @@ node{
    stage('SCM Checkout'){
      git 'https://github.com/Aklia-Lab/AliLab'
   }
-   stage('Test Stage'){
-    sh 'echo "test"'
-  }
    
  stage('SonarQube Analysis') {
     def scannerHome = tool 'a-sonar';
@@ -23,6 +20,17 @@ node{
               }
           }
       }
+   
+ agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
+        }
+    }
+   
  stage('Build image') {
         app = docker.build("a-lab/pyapp")
     }  
