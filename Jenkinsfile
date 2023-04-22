@@ -36,7 +36,7 @@ node{
   stage('run app') {
         docker.withServer('tcp://192.168.1.10:2375') {
         docker.image('a-lab/pyyapp').withRun('-d -p 5005:5000') {
-            /* do things */
+            sh "python3 -m flask run --host=0.0.0.0 --port=5000"
         }
     }
     }
