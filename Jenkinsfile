@@ -23,7 +23,7 @@ node{
 
    
  stage('Build image') {
-        app = docker.build("a-lab/pyapp")
+        app = docker.build("a-lab/pyyapp")
     }  
    
  stage('Push image') {
