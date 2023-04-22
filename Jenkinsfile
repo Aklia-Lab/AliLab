@@ -1,4 +1,6 @@
 node{
+   def app
+   
    stage('SCM Checkout'){
      git 'https://github.com/Aklia-Lab/AliLab'
   }
@@ -21,7 +23,14 @@ node{
               }
           }
       }
- stage('Build') {
-    sh 'docker build -t a-lab/pyapp .'
-   }
+ stage('Build image') {
+        app = docker.build("a-lab/pyapp")
+    }  
+   
+ stage('Push image') {
+        docker.withRegistry('https://registry.aaklia.com') {
+            app.push("${env.BUILD_NUMBER}")
+            app.push("latest")
+        }
+    }
 }
