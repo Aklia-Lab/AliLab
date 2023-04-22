@@ -21,16 +21,10 @@ node{
               }
           }
       }
-agent { dockerfile true }
-stages {
-   stage( 'Test') {
-     steps {
-      sh ...
-         node --version
-        git --version
-         curl --version
+
+
  
-    
+  agent { dockerfile true }  
   stage('Deploy/build') {
         def docker = "a-docker"
         docker.withRegistry('https://registry.aaklia.com/') {
