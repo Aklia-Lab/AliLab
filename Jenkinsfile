@@ -32,13 +32,4 @@ node{
             app.push("latest")
         }
     }
-   
-  stage('Run app') {
-        docker.withServer('tcp://192.168.1.10:2375') {
-        docker.image('a-lab/pyyapp').withRun('-d -p 5005:5000') {
-            sh "sleep infinity"
-        }
-    }
-    }
-   
 }
